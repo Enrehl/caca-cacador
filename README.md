@@ -4,18 +4,24 @@ DIAGRAMA MÁQUINA DE ESTADOS
 
 ![image](https://user-images.githubusercontent.com/89395563/195960891-b35e4912-c983-46ba-8b55-7ab44c85ffe0.png)
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 POSICIONAMENTO NO GRID
 
 Exemplo do código da presa
+
 ![image](https://user-images.githubusercontent.com/89395563/195962299-972cb85f-e3bd-48b6-b7eb-327b24e624bc.png)
 
 Função UpdatePosition()
+
 ![image](https://user-images.githubusercontent.com/89395563/195962308-0f350946-1179-44e1-907b-a3f2c0d1966c.png)
 
 Ao iniciar o jogo, a sala é dividida em um tabuleiro de 30x30 casas. Toda vez que uma presa ou o caçador é criado, sua posição x e y é determinada por meio de um valor de 0 a 29 aleatório (para cada eixo) guardado em um struct. Por meio da função UpdatePosition, esse valor (indicatório de em qual célula a entidade está) é convertido em coordenadas práticas dentro da sala do jogo, efetivamente posicionando o sprite no local correto. Lidar com a posição de entidades dessa maneira permite simplificar a movimentação em grid, além das verificações de colisão, etc.
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 MÁQUINA DE ESTADOS - PRESA
+
 ![image](https://user-images.githubusercontent.com/89395563/195960946-88b2cb91-bec5-4a55-b7c1-00afbef025c4.png)
 
 1 - Em seu evento step, ocorre a transição do estado de Standby (estado em que fica ao terminar suas ações, e durante o turno do caçador). Por meio da variável hunterSpotted, a presa determina se ela avistou o caçador durante o Standby ou não e, caso tenha, entra no estado de Flee. Caso não tenha, entra no estado de Search. Em sequência, fora do if anterior (que somente roda uma vez, ao começo de cada turno da presa), é usado "state()" para chamar a função salva como valor da variável state.
@@ -42,5 +48,7 @@ Efetivamente, esse estado funciona pegando a lookDirection, rodando a função M
 ![image](https://user-images.githubusercontent.com/89395563/195962863-15d2579d-f592-409e-ad8b-a95f6e95d8ea.png)
 
 5 - Descrição do estado Standby. Nesse estado, a presa já finalizou seu turno, e ficará apenas recebendo inputs de sua visão, possivelmente detectando o caçador, e aguardando até que seja seu turno novamente.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
