@@ -77,5 +77,23 @@ MÁQUINA DE ESTADOS - CAÇADOR
 
 6 - Descrição do estado Chase. Acessível apenas a partir do estado Standby ao começo do turno, o estado de Chase aumenta a moveSpeed do caçador caso sua presa ativa tenha avistado-o e esteja fugindo. Após os ajustes, ele segue direto para o estado Move.
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TROCA DE TURNOS
+
+![image](https://user-images.githubusercontent.com/89395563/195963600-7bcb1fbc-e4f0-4da9-a749-91969584800e.png)
+
+1 - Descrição de obj_Game, mostrando o funcionamento da troca de turnos. A partir de uma verificação da variável global turno, o gerenciador executa uma verificação. Se for o turno da presa, ele analisa uma lista com os ids de cada uma das presas vivas, passando de uma a uma e determinando em que estado elas estão. Se alguma estiver em qualquer estado que não standby, o loop do for é quebrado, e a verificação começa novamente. Caso estejam todas em Standby, um alarme é chamado para alterar as variáveis necessárias à troca de turno (o alarme aqui não é obrigatório, porém ajuda a controlar o timing dos eventos, tornando a simulação mais fácil de ser compreendida por alguém olhando).
+Caso seja o turno do caçador, a verificação é mais simples. Ele apenas determina se ele está em Standby e, se sim, chama outro alarme para, novamente, alterar as variáveis para a troca de turno.
+
+Alarme 0, chamado ao determinar que todas as presas estão em Standby.
+
+![image](https://user-images.githubusercontent.com/89395563/195963753-1fc91902-1ef7-426b-961f-7647dfb7e86a.png)
+
+Alarme 1, chamado ao determinar que o caçador está em Standby.
+
+![image](https://user-images.githubusercontent.com/89395563/195963770-a7eb5e66-9be6-4c61-895b-964af3870fab.png)
+
+
 
 
